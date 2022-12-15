@@ -7,15 +7,31 @@ import { Modal, ModalHeader, ModalBody } from "reactstrap"
 const TreeDetails = (props) => {
 
     const hoverStyle = {
-        boxShadow: "10.5px 10.5px 7px black"
+        boxShadow: "10.5px 10.5px 7px black",
+        bottom: "6px"
     }
     let [empData, setEmpData] = useState([])
     let [singleData, setSingleData] = useState({})
     let [modal,setModal]=useState(false)
+    let [ceoHover,setCeoHover]=useState(false)
+    let [ctoHover,setCtoHover]=useState(false)
+    let [cboHover,setCboHover]=useState(false)
+    let [cfoHover,setCfoHover]=useState(false)
 
     useEffect(() => {
         setEmpData(props.wholeData)
     }, [props])
+
+   let teamHover=(name)=>{
+    if(name==="Jas John"){setCeoHover(true)}
+    else {setCeoHover(false)}
+    if(name==="Leo Six"){setCtoHover(true)}
+    else {setCtoHover(false)}
+    if(name==="Diala Sho"){setCboHover(true)}
+    else {setCboHover(false)}
+    if(name==="Tab Han"){setCfoHover(true)}
+    else {setCfoHover(false)}
+    }
 
     let popUpView = (data) => {
         setSingleData(data)
@@ -57,7 +73,7 @@ const TreeDetails = (props) => {
                             {empData.map((dat) => {
                                 if (dat.id === 101) {
                                     return <>
-                                        <div className="card card1 card11" onClick={popUpView.bind(this, dat)} >
+                                        <div className="card card1 card11"  onClick={popUpView.bind(this, dat)} style={ceoHover?hoverStyle:null} onMouseOver={teamHover.bind(this,dat.name)} onMouseOut={teamHover.bind(this,"")}>
                                             <center key={dat.id} > <img src={dat.image} height="80px" style={{ borderRadius: "50%", margin: 0, padding: 0 }} alt="no-data" /> <br />
                                                 <h5 style={{ margin: 0, padding: 0 }}>{dat.name}</h5>
                                                 <p style={{ margin: 0, padding: 0, fontSize: "0.5rem" }}>{dat.designation}</p>
@@ -77,7 +93,7 @@ const TreeDetails = (props) => {
                                 {empData.map((dat) => {
                                     if (dat.id === 102) {
                                         return <>
-                                            <div className="card card1 card11" onClick={popUpView.bind(this, dat)}   >
+                                            <div className="card card1 card11" onClick={popUpView.bind(this, dat)} style={ceoHover || ctoHover?hoverStyle:null} onMouseOver={teamHover.bind(this,dat.name)} onMouseOut={teamHover.bind(this,"")}>
                                                 <center key={dat.id}> <img src={dat.image} height="80px" style={{ borderRadius: "50%", margin: 0, padding: 0 }} alt="no-data" /> <br />
                                                     <h5 style={{ margin: 0, padding: 0 }}>{dat.name}</h5>
                                                     <p style={{ margin: 0, padding: 0, fontSize: "0.5rem" }}>{dat.designation}</p>
@@ -93,7 +109,7 @@ const TreeDetails = (props) => {
                                         {empData.map((dat) => {
                                             if (dat.id === 108) {
                                                 return <>
-                                                    <div className="card card1" onClick={popUpView.bind(this, dat)}>
+                                                    <div className="card card1" onClick={popUpView.bind(this, dat)}  style={ ctoHover?hoverStyle:null}>
                                                         <center key={dat.id}> <img src={dat.image} height="80px" style={{ borderRadius: "50%", margin: 0, padding: 0 }} alt="no-data" /> <br />
                                                             <h5 style={{ margin: 0, padding: 0 }}>{dat.name}</h5>
                                                             <p style={{ margin: 0, padding: 0, fontSize: "0.5rem" }}>{dat.designation}</p>
@@ -108,7 +124,7 @@ const TreeDetails = (props) => {
                                             {empData.map((dat) => {
                                                 if (dat.id === 106) {
                                                     return <>
-                                                        <div className="card card1" onClick={popUpView.bind(this, dat)} >
+                                                        <div className="card card1" onClick={popUpView.bind(this, dat)}style={ ctoHover?hoverStyle:null} >
                                                             <center key={dat.id}> <img src={dat.image} height="80px" style={{ borderRadius: "50%", margin: 0, padding: 0 }} alt="no-data" /> <br />
                                                                 <h5 style={{ margin: 0, padding: 0 }}>{dat.name}</h5>
                                                                 <p style={{ margin: 0, padding: 0, fontSize: "0.5rem" }}>{dat.designation}</p>
@@ -120,7 +136,7 @@ const TreeDetails = (props) => {
                                             {empData.map((dat) => {
                                                 if (dat.id === 107) {
                                                     return <>
-                                                        <div className="card card1" onClick={popUpView.bind(this, dat)} >
+                                                        <div className="card card1" onClick={popUpView.bind(this, dat)} style={ ctoHover?hoverStyle:null}>
                                                             <center key={dat.id}> <img src={dat.image} height="80px" style={{ borderRadius: "50%", margin: 0, padding: 0 }} alt="no-data" /> <br />
                                                                 <h5 style={{ margin: 0, padding: 0 }}>{dat.name}</h5>
                                                                 <p style={{ margin: 0, padding: 0, fontSize: "0.5rem" }}>{dat.designation}</p>
@@ -136,7 +152,7 @@ const TreeDetails = (props) => {
                                                 {empData.map((dat) => {
                                                     if (dat.id === 105) {
                                                         return <>
-                                                            <div className="card card1" onClick={popUpView.bind(this, dat)} >
+                                                            <div className="card card1" onClick={popUpView.bind(this, dat)}style={ ctoHover?hoverStyle:null} >
                                                                 <center key={dat.id}> <img src={dat.image} height="80px" style={{ borderRadius: "50%", margin: 0, padding: 0 }} alt="no-data" /> <br />
                                                                     <h5 style={{ margin: 0, padding: 0 }}>{dat.name}</h5>
                                                                     <p style={{ margin: 0, padding: 0, fontSize: "0.5rem" }}>{dat.designation}</p>
@@ -151,7 +167,7 @@ const TreeDetails = (props) => {
                                                 {empData.map((dat) => {
                                                     if (dat.id === 109) {
                                                         return <>
-                                                            <div className="card card1" onClick={popUpView.bind(this, dat)} >
+                                                            <div className="card card1" onClick={popUpView.bind(this, dat)} style={ ctoHover?hoverStyle:null}>
                                                                 <center key={dat.id}> <img src={dat.image} height="80px" style={{ borderRadius: "50%", margin: 0, padding: 0 }} alt="no-data" /> <br />
                                                                     <h5 style={{ margin: 0, padding: 0 }}>{dat.name}</h5>
                                                                     <p style={{ margin: 0, padding: 0, fontSize: "0.5rem" }}>{dat.designation}</p>
@@ -172,7 +188,7 @@ const TreeDetails = (props) => {
                                 {empData.map((dat) => {
                                     if (dat.id === 111) {
                                         return <>
-                                            <div className="card card1 card11" onClick={popUpView.bind(this, dat)} >
+                                            <div className="card card1 card11" onClick={popUpView.bind(this, dat)} style={ceoHover || cboHover ?hoverStyle:null}  onMouseOver={teamHover.bind(this,dat.name)} onMouseOut={teamHover.bind(this,"")}>
                                                 <center key={dat.id}> <img src={dat.image} height="80px" style={{ borderRadius: "50%", margin: 0, padding: 0 }} alt="no-data" /> <br />
                                                     <h5 style={{ margin: 0, padding: 0 }}>{dat.name}</h5>
                                                     <p style={{ margin: 0, padding: 0, fontSize: "0.5rem" }}>{dat.designation}</p>
@@ -187,7 +203,7 @@ const TreeDetails = (props) => {
                                         {empData.map((dat) => {
                                             if (dat.id === 104) {
                                                 return <>
-                                                    <div className="card card1" onClick={popUpView.bind(this, dat)}>
+                                                    <div className="card card1" onClick={popUpView.bind(this, dat)} style={cboHover ?hoverStyle:null}>
                                                         <center key={dat.id}> <img src={dat.image} height="80px" style={{ borderRadius: "50%", margin: 0, padding: 0 }} alt="no-data" /> <br />
                                                             <h5 style={{ margin: 0, padding: 0 }}>{dat.name}</h5>
                                                             <p style={{ margin: 0, padding: 0, fontSize: "0.5rem" }}>{dat.designation}</p>
@@ -202,7 +218,7 @@ const TreeDetails = (props) => {
                                             {empData.map((dat) => {
                                                 if (dat.id === 110) {
                                                     return <>
-                                                        <div className="card card1" onClick={popUpView.bind(this, dat)}>
+                                                        <div className="card card1" onClick={popUpView.bind(this, dat)} style={cboHover ?hoverStyle:null}>
                                                             <center key={dat.id}> <img src={dat.image} height="80px" style={{ borderRadius: "50%", margin: 0, padding: 0 }} alt="no-data" /> <br />
                                                                 <h5 style={{ margin: 0, padding: 0 }}>{dat.name}</h5>
                                                                 <p style={{ margin: 0, padding: 0, fontSize: "0.5rem" }}>{dat.designation}</p>
@@ -214,7 +230,7 @@ const TreeDetails = (props) => {
                                             {empData.map((dat) => {
                                                 if (dat.id === 112) {
                                                     return <>
-                                                        <div className="card card1" onClick={popUpView.bind(this, dat)}>
+                                                        <div className="card card1" onClick={popUpView.bind(this, dat)} style={cboHover ?hoverStyle:null}>
                                                             <center key={dat.id}> <img src={dat.image} height="80px" style={{ borderRadius: "50%", margin: 0, padding: 0 }} alt="no-data" /> <br />
                                                                 <h5 style={{ margin: 0, padding: 0 }}>{dat.name}</h5>
                                                                 <p style={{ margin: 0, padding: 0, fontSize: "0.5rem" }}>{dat.designation}</p>
@@ -233,7 +249,7 @@ const TreeDetails = (props) => {
                                 {empData.map((dat) => {
                                     if (dat.id === 103) {
                                         return <>
-                                            <div className="card card1 card11" onClick={popUpView.bind(this, dat)} >
+                                            <div className="card card1 card11" onClick={popUpView.bind(this, dat)} style={ceoHover || cfoHover?hoverStyle:null}onMouseOver={teamHover.bind(this,dat.name)} onMouseOut={teamHover.bind(this,"")}>
                                                 <center key={dat.id}> <img src={dat.image} height="80px" style={{ borderRadius: "50%", margin: 0, padding: 0 }} alt="no-data" /> <br />
                                                     <h5 style={{ margin: 0, padding: 0 }}>{dat.name}</h5>
                                                     <p style={{ margin: 0, padding: 0, fontSize: "0.5rem" }}>{dat.designation}</p>
@@ -250,7 +266,7 @@ const TreeDetails = (props) => {
                                             {empData.map((dat) => {
                                                 if (dat.id === 113) {
                                                     return <>
-                                                        <div className="card card1" onClick={popUpView.bind(this, dat)}>
+                                                        <div className="card card1" onClick={popUpView.bind(this, dat)} style={cfoHover?hoverStyle:null}>
                                                             <center key={dat.id}> <img src={dat.image} height="80px" style={{ borderRadius: "50%", margin: 0, padding: 0 }} alt="no-data" /> <br />
                                                                 <h5 style={{ margin: 0, padding: 0 }}>{dat.name}</h5>
                                                                 <p style={{ margin: 0, padding: 0, fontSize: "0.5rem" }}>{dat.designation}</p>
@@ -262,7 +278,7 @@ const TreeDetails = (props) => {
                                             {empData.map((dat) => {
                                                 if (dat.id === 114) {
                                                     return <>
-                                                        <div className="card card1" onClick={popUpView.bind(this, dat)} >
+                                                        <div className="card card1" onClick={popUpView.bind(this, dat)} style={cfoHover?hoverStyle:null}>
                                                             <center key={dat.id}> <img src={dat.image} height="80px" style={{ borderRadius: "50%", margin: 0, padding: 0 }} alt="no-data" /> <br />
                                                                 <h5 style={{ margin: 0, padding: 0 }}>{dat.name}</h5>
                                                                 <p style={{ margin: 0, padding: 0, fontSize: "0.5rem" }}>{dat.designation}</p>

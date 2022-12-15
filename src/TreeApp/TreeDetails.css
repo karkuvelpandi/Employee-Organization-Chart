@@ -76,10 +76,10 @@
     width: 100px;
     border: 2px solid gold;
 } 
-.card1:hover{
+ .card1:hover{
       box-shadow: 10.5px 10.5px 7px black;
       bottom: 6px;
-}
+} 
 .card11:hover{
       cursor: pointer;
 }
